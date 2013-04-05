@@ -12,6 +12,11 @@ executable
 The long term solution is to move this data right into each package. Preferably
 into the control file itself.
 
+How much of the archive is covered?
+===================================
+
+This database covers about 11% of the Ubuntu archive.
+
 How to generate this data?
 ==========================
 
