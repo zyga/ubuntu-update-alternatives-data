@@ -45,8 +45,8 @@ package. Since Debian package versions cannot be reused it is safe to assume
 that each record uniquely identifies a particular binary package.
 
 The most important data stored in each record is the ``alternatives`` key. If
-present, it contains a space-separated list of pairs link=path that enumerate
-all usages of update-alternatives of a given package.
+present, it contains a space-separated list of pairs ``link=path`` that
+enumerate all usages of update-alternatives of a given package.
 
 The presence of the ``manual-check == yes`` key-value pair indicates that the
 package needs to be inspected manually. This key should be removed after
@@ -54,13 +54,13 @@ inspection.
 
 The presence of the ``using-hint = yes`` key-value pair indicates that this
 record was derived from a previously validated guess. Technically the guess is
-based on hints, not on the postinst script so this _might_ be incorrect but
+based on hints, not on the ``postinst`` script so this _might_ be incorrect but
 usually is not. 
 
 The presence and value of the ``hint-correct`` key encodes if the automatically
 generated list of hints was correct or not, as determined by manual inspection.
 
-The presence of the ``hint-hash`` key indicates the hash of the canonical
+The value of the ``hint-hash`` key encodes the hash of the canonical
 representation of the list of hints. This is used as an implementation detail,
 to accelerate discovery of hints that can be reused. See the source code for
 details on how this is computed and used. 
@@ -68,3 +68,10 @@ details on how this is computed and used.
 The presence of the ``using-hint = yes`` key-value pair indicates that this
 record reused an answer from another record and that it was not manually
 verified.
+
+The presence of the ``using-variables = yes`` key-value pair indicates that
+hints contain shell variables.
+
+The presence of the ``empty-hints = yes`` key-value pair indicates that despite
+having ``update-alternatives`` call somewhere in the ``postinst`` script, the
+list of hints was empty.
